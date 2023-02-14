@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memorury/TaskCard.dart';
 
 class MemoTopScreen extends StatefulWidget {
   @override
@@ -9,28 +10,53 @@ class _MemoTopScreenState extends State<MemoTopScreen> {
   @override
   Widget build(BuildContext context) {
     return  Center(
-      child: Padding(        
-        padding: EdgeInsets.all(30),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 600),
         child: Column(
           children: <Widget>[
-            Card(
-              child: Column(
-                children: const [
-                  ListTile(
-                    leading: Icon(Icons.add),
-                    title: Text('Card03'),
-                    subtitle: Text('Card SubTitle'),
-                  ),
-                  Text('hello'),
-                ],
-              ),
-              color: Colors.green, // Card自体の色
-              margin: const EdgeInsets.all(30),
-              elevation: 8, // 影の離れ具合
-              shadowColor: Colors.black ,// 影の色
-              shape: RoundedRectangleBorder( // 枠線を変更できる
-                borderRadius: BorderRadius.circular(10),
-              ),
+            Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.event),
+                    Text("カード"),
+                  ]
+                ),
+                TaskCard(
+                  title: 'hogetitle',
+                  memo: 'hogehoge',
+                  createdAt: DateTime.now(),
+                  expires: 7,
+                )
+              ]
+            ),
+            Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.archive),
+                    Text("アーカイブ"),
+                  ],
+                ),
+                ListTile(
+                  title: Text("hpgea-ka"),
+                  subtitle: Text("hogehoge"),
+                ),
+              ]
+            ),
+            Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.done),
+                    Text("完了"),
+                  ]
+                ),
+                ListTile(
+                  title: Text("完了のタイトル"),
+                  subtitle: Text("hogekanryo"),
+                ),
+              ]
             ),
           ],
             //child: Container(color: Colors.red),
